@@ -10,19 +10,18 @@ import lombok.*;
 @AllArgsConstructor
 public class AeroportoClientDto {
 
-
     @JsonProperty("PlaceId")
-    public String iata;
+    private String iata;
 
     @JsonProperty("CityId")
-    public String cidadeId;
+    private String cidadeId;
 
     @JsonProperty("CityName")
-    public String cidade;
+    private String cidade;
 
     @JsonProperty("CountryId")
-    public String paisSigla;
+    private String paisSigla;
 
     @JsonProperty("CountryName")
-    public String pais;
+    private String pais;
 }

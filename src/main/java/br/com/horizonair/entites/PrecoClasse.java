@@ -1,5 +1,6 @@
 package br.com.horizonair.entites;
 
+import br.com.horizonair.enums.EnumPrecoClasse;
 import lombok.*;
 
 import javax.persistence.*;
@@ -16,14 +17,14 @@ import java.util.UUID;
 public class PrecoClasse {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private UUID uuid;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "voo_id")
     private Voo voo;
 
-    private String nome;
+    @Enumerated(EnumType.STRING)
+    private EnumPrecoClasse nome;
 
     private Integer quantidadeAssento;
 

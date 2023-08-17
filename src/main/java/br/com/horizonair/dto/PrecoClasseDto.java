@@ -1,8 +1,11 @@
 package br.com.horizonair.dto;
 
 import br.com.horizonair.entites.Voo;
+import br.com.horizonair.enums.EnumPrecoClasse;
 import lombok.*;
 
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import java.math.BigDecimal;
 import java.util.UUID;
 
@@ -13,13 +16,12 @@ import java.util.UUID;
 @AllArgsConstructor
 public class PrecoClasseDto {
 
+    private Long id;
 
+    private VooDto voo;
 
-    private UUID uuid;
-
-    private Voo voo;
-
-    private String nome;
+    @Enumerated(EnumType.STRING)
+    private EnumPrecoClasse nome;
 
     private Integer quantidadeAssento;
 

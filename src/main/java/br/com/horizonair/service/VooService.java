@@ -1,9 +1,18 @@
 package br.com.horizonair.service;
 
 import br.com.horizonair.dto.VooDto;
+import br.com.horizonair.dto.VooDtoFilter;
+import br.com.horizonair.dto.VooDtoUpdateRequest;
+import br.com.horizonair.entites.Voo;
+
+import java.util.List;
 
 public interface VooService {
 
 
-    VooDto criar(VooDto vooDto);
+    void criar(VooDto vooDto);
+
+    List<Voo> buscarVoo(VooDtoFilter vooDtoFilter);
+
+    void atualizarVoo(Long codigoVoo, VooDtoUpdateRequest vooDtoUpdateRequest);
 }

@@ -4,8 +4,10 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.*;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.Date;
+import java.util.List;
 import java.util.UUID;
 
 
@@ -18,8 +20,8 @@ import java.util.UUID;
 public class Voo {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private UUID codigoVoo;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long codigoVoo;
 
     @OneToOne(cascade = CascadeType.ALL)
     private Aeroporto origem;
@@ -28,8 +30,12 @@ public class Voo {
     private Aeroporto destino;
 
     @JsonFormat(pattern = "dd/MM/yyyy")
-    private Date dataPartida;
+    private LocalDate dataPartida;
 
     @JsonFormat(pattern="HH:mm:ss")
     private LocalTime horaPartida;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "voo")
+    @Transient
+    private List<PrecoClasse> precoClasse;
 }

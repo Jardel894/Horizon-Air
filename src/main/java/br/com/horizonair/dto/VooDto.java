@@ -1,10 +1,14 @@
 package br.com.horizonair.dto;
 
+import br.com.horizonair.entites.PrecoClasse;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.*;
 
 import javax.validation.constraints.NotNull;
+import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.Date;
+import java.util.List;
 
 
 @Getter
@@ -19,9 +23,11 @@ public class VooDto {
     @NotNull
     private AeroportoDto destino;
     @NotNull
-    private Date dataPartida;
+    @JsonFormat()
+    private LocalDate dataPartida;
     @NotNull
     private LocalTime horaPartida;
     @NotNull
-    private Integer quatidadeAssento;
+    private List<PrecoClasseDto> precoClasse;
+
 }

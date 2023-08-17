@@ -3,11 +3,7 @@ package br.com.horizonair.entites;
 
 import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import java.util.UUID;
+import javax.persistence.*;
 
 @Getter
 @Setter
@@ -18,18 +14,19 @@ import java.util.UUID;
 public class Aeroporto {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private UUID uuid;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-    public String iata;
+    @Column(unique = true)
+    private String iata;
 
-    public String cidade;
+    private String cidade;
 
-    public String cidadeId;
+    private String cidadeId;
 
-    public String uf;
+    private String uf;
 
-    public String paisSigla;
+    private String paisSigla;
 
-    public String pais;
+    private String pais;
 }
