@@ -36,6 +36,5 @@ public class Voo {
     private LocalTime horaPartida;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "voo")
-    @Transient
     private List<PrecoClasse> precoClasse;
 }

@@ -62,6 +62,12 @@ public class VooSeviceImpl  implements VooService {
 
     }
 
+    @Override
+    public Voo getVoo(Long vooId) {
+        return vooRepository.findById(vooId)
+                .orElseThrow( () -> new  RuntimeException("Voo não encontrado"));
+    }
+
     private void setUpdateAeroporto(VooDtoUpdateRequest vooDtoUpdateRequest, Voo voo) {
 
         if(!ObjectUtils.isEmpty(vooDtoUpdateRequest) && !ObjectUtils.isEmpty(vooDtoUpdateRequest.getOrigem())) {

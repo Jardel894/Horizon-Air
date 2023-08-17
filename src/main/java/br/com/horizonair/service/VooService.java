@@ -15,4 +15,6 @@ public interface VooService {
     List<Voo> buscarVoo(VooDtoFilter vooDtoFilter);
 
     void atualizarVoo(Long codigoVoo, VooDtoUpdateRequest vooDtoUpdateRequest);
+
+    Voo getVoo(Long vooId);
 }
