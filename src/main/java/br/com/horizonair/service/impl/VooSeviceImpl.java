@@ -9,6 +9,7 @@ import br.com.horizonair.dto.VooDtoUpdateRequest;
 import br.com.horizonair.entites.Aeroporto;
 import br.com.horizonair.entites.PrecoClasse;
 import br.com.horizonair.entites.Voo;
+import br.com.horizonair.exception.VooNotFoundException;
 import br.com.horizonair.repository.AeroportoRepository;
 import br.com.horizonair.repository.PrecoClasseRepository;
 import br.com.horizonair.repository.VooRepository;
@@ -68,12 +69,20 @@ public class VooSeviceImpl  implements VooService {
                 .orElseThrow( () -> new  RuntimeException("Voo não encontrado"));
     }
 
+    @Override
+    @Transactional
+    public void cancelarVoo(Long codigoVoo) {
+      Voo vooACancelar = vooRepository.findById(codigoVoo).orElseThrow(
+              VooNotFoundException::new);
+       vooACancelar.setAtivo(Boolean.FALSE);
+    }
+
     private void setUpdateAeroporto(VooDtoUpdateRequest vooDtoUpdateRequest, Voo voo) {
 
         if(!ObjectUtils.isEmpty(vooDtoUpdateRequest) && !ObjectUtils.isEmpty(vooDtoUpdateRequest.getOrigem())) {
             Optional<Aeroporto> origemOptional = aeroportoRepository.findByIata(vooDtoUpdateRequest.getOrigem().getIata());
             if (origemOptional.isPresent()) voo.setOrigem(origemOptional.get());
-            voo.getOrigem().setCidadeId(vooDtoUpdateRequest.getOrigem().getCidadeSigla());
+            voo.getOrigem().setCidadeSigla(vooDtoUpdateRequest.getOrigem().getCidadeSigla());
 
         }
 
@@ -81,7 +90,7 @@ public class VooSeviceImpl  implements VooService {
         if(!ObjectUtils.isEmpty(vooDtoUpdateRequest) && !ObjectUtils.isEmpty(vooDtoUpdateRequest.getDestino())) {
             Optional<Aeroporto> destinoOptional = aeroportoRepository.findByIata(vooDtoUpdateRequest.getDestino().getIata());
             if (destinoOptional.isPresent()) voo.setDestino(destinoOptional.get());
-            voo.getDestino().setCidadeId(vooDtoUpdateRequest.getDestino().getCidadeSigla());
+            voo.getDestino().setCidadeSigla(vooDtoUpdateRequest.getDestino().getCidadeSigla());
         }
 
     }
@@ -102,10 +111,11 @@ public class VooSeviceImpl  implements VooService {
                 .cidade(vooDtoFilter.getDestino())
                 .build();
 
-        Voo voo = Voo.builder()
+        Voo vooFilter = Voo.builder()
                 .origem(origem)
                 .destino(destino)
                 .dataPartida(vooDtoFilter.getDataPartida())
+                .ativo(Boolean.TRUE)
                 .build();
 
         ExampleMatcher matcher = ExampleMatcher.matching()
@@ -113,7 +123,7 @@ public class VooSeviceImpl  implements VooService {
                 .withIgnoreCase()
                 .withIgnoreNullValues();
 
-        return Example.of(voo, matcher);
+        return Example.of(vooFilter, matcher);
     }
 
 }

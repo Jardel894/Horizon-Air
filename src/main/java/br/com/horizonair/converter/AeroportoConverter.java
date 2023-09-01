@@ -8,7 +8,7 @@ public class AeroportoConverter {
 
         return Aeroporto.builder()
                 .iata(aeroportoDto.getIata())
-                .cidadeId(aeroportoDto.getCidadeId())
+                .cidadeSigla(aeroportoDto.getCidadeSigla())
                 .cidade(aeroportoDto.getCidade())
                 .paisSigla(aeroportoDto.getPaisSigla())
                 .uf(aeroportoDto.getUf())
@@ -20,7 +20,7 @@ public class AeroportoConverter {
 
         return AeroportoDto.builder()
                 .iata(aeroporto.getIata())
-                .cidadeId(aeroporto.getCidadeId())
+                .cidadeSigla(aeroporto.getCidadeSigla())
                 .cidade(aeroporto.getCidade())
                 .paisSigla(aeroporto.getPaisSigla())
                 .uf(aeroporto.getUf())

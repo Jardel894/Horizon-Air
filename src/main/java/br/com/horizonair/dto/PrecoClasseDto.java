@@ -1,13 +1,12 @@
 package br.com.horizonair.dto;
 
-import br.com.horizonair.entites.Voo;
 import br.com.horizonair.enums.EnumPrecoClasse;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import lombok.*;
 
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
+
 import java.math.BigDecimal;
-import java.util.UUID;
 
 @Getter
 @Setter

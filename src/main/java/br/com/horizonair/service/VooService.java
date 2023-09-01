@@ -17,4 +17,6 @@ public interface VooService {
     void atualizarVoo(Long codigoVoo, VooDtoUpdateRequest vooDtoUpdateRequest);
 
     Voo getVoo(Long vooId);
+
+    void cancelarVoo(Long codigoVoo);
 }

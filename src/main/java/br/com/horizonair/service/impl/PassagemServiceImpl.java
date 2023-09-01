@@ -49,6 +49,11 @@ public class PassagemServiceImpl implements PassagemService {
                 .build();
         passagemRepository.save(passagem);
         return PassagemDtoResponse.builder()
+                .id(passagem.getId())
+                .origem(passagem.getVoo().getOrigem().getIata())
+                .destino(passagem.getVoo().getDestino().getIata())
+                .dataPartida(passagem.getVoo().getDataPartida())
+                .horaPartida(passagem.getVoo().getHoraPartida())
                 .precoTotalPassagem(passagem.getPrecoTotalPassagem())
                 .build();
     }

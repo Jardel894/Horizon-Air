@@ -1,20 +1,29 @@
 spring:
 
-  datasource:
-    url: jdbc:h2:file:../horizonair/horizondb
-    username: root
-    password:
-    driverClassName: org.h2.Driver
+ datasource:
+   driverClassName: com.mysql.cj.jdbc.Driver
+   url: jdbc:mysql://${HOST}/${DATABASE}?createDatabaseIfNotExist=true&allowPublicKeyRetrieval=true
+   username: ${USERNAME}
+   password: ${PASSWORD}
 
-  jpa:
-    database-platform: org.hibernate.dialect.H2Dialect
-    properties:
-      hibernate:
-         show_sql: true
-         format_sql: true
-    hibernate.ddl-auto: update
+ jpa:
+     database: MYSQL
+     database-platform: org.hibernate.dialect.MySQLDialect
+     hibernate:
+       ddl-auto: update
+     show-sql: true
 
-  h2:
-    console:
-      enabled: true
-      path: /h2
+
+cloud:
+    openfeign:
+      client:
+        config:
+          default:
+            connectTimeout: 5000
+            readTimeout: 5000
+            loggerLevel: basic
+
+springdoc:
+  swagger-ui:
+   path: swagger-ui.html
+

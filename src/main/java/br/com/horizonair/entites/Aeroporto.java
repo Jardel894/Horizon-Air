@@ -1,9 +1,9 @@
 package br.com.horizonair.entites;
 
 
+import jakarta.persistence.*;
 import lombok.*;
 
-import javax.persistence.*;
 
 @Getter
 @Setter
@@ -22,7 +22,7 @@ public class Aeroporto {
 
     private String cidade;
 
-    private String cidadeId;
+    private String cidadeSigla;
 
     private String uf;
 

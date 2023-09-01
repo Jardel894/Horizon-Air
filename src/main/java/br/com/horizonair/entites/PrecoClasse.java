@@ -1,12 +1,12 @@
 package br.com.horizonair.entites;
 
+
 import br.com.horizonair.enums.EnumPrecoClasse;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import jakarta.persistence.*;
 import lombok.*;
 
-import javax.persistence.*;
 import java.math.BigDecimal;
-import java.util.UUID;
-
 
 @Getter
 @Setter
@@ -21,6 +21,7 @@ public class PrecoClasse {
     private Long id;
 
     @ManyToOne
+    @JsonBackReference
     private Voo voo;
 
     @Enumerated(EnumType.STRING)

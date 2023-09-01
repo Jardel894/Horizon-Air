@@ -1,13 +1,11 @@
 package br.com.horizonair.dto;
 
-import br.com.horizonair.entites.PrecoClasse;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import jakarta.validation.constraints.NotNull;
 import lombok.*;
 
-import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 import java.time.LocalTime;
-import java.util.Date;
 import java.util.List;
 
 

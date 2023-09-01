@@ -36,4 +36,10 @@ public class VooController {
          vooService.atualizarVoo(codigoVoo, vooDtoUpdateRequest);
 
     }
+
+    @DeleteMapping("{codigoVoo}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void cancelarVoo(@PathVariable Long codigoVoo){
+        vooService.cancelarVoo(codigoVoo);
+    }
 }

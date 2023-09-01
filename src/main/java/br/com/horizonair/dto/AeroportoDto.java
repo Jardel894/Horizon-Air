@@ -1,8 +1,9 @@
 package br.com.horizonair.dto;
 
+import jakarta.validation.constraints.NotNull;
 import lombok.*;
 
-import javax.validation.constraints.NotNull;
+
 @Getter
 @Setter
 @Builder
@@ -14,7 +15,7 @@ public class AeroportoDto {
     private String iata;
 
     @NotNull
-    private String cidadeId;
+    private String cidadeSigla;
 
     @NotNull
     private String cidade;

@@ -1,10 +1,10 @@
 package br.com.horizonair.entites;
 
+import jakarta.persistence.*;
 import lombok.*;
 
-import javax.persistence.*;
 import java.math.BigDecimal;
-import java.util.UUID;
+
 
 @Getter
 @Setter

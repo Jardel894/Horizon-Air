@@ -12,7 +12,7 @@ import java.util.UUID;
 @Repository
 public interface AeroportoRepository extends JpaRepository<Aeroporto, Long> {
 
-    Aeroporto findByCidade(String cidade);
+    Optional<Aeroporto> findByCidade(String cidade);
 
 
     Optional<Aeroporto> findByIata(String iata);
